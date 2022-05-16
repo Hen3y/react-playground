@@ -1,2 +1,2 @@
 export * from './Home'
-export * from './Win10Grid'
+export * from './win10Grid/Win10Grid'
