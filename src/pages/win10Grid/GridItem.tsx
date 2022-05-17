@@ -9,22 +9,26 @@ interface GridItemProps {
 }
 
 const GridItem = ({ className, children, id }: GridItemProps) => {
+  const handleOnMouseMoveItem = (e: MouseEvent<HTMLLIElement>) => {
+    e.stopPropagation();
+    const { clientX, clientY } = e;
+    setElementStyleWhenMouseIn(
+      e.currentTarget,
+      { clientX, clientY },
+      (x, y) =>
+        `background: radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));border-image: radial-gradient(20% 75% at ${x}px ${y}px ,rgba(255,255,255,0.7),rgba(255,255,255,0.1) ) 1 / 1px / 0px stretch;`
+    );
+  };
+
+  const handleOnMouseLeaveItem = (e: MouseEvent<HTMLLIElement>) =>
+    e.currentTarget.removeAttribute('style');
+
   return (
     <li
       id={id}
       className={className}
-      onMouseMove={(e: MouseEvent<HTMLLIElement>) => {
-        const { clientX, clientY } = e;
-        setElementStyleWhenMouseIn(
-          e.currentTarget,
-          { clientX, clientY },
-          (x, y) =>
-            `background: radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));border-image: radial-gradient(20% 75% at ${x}px ${y}px ,rgba(255,255,255,0.7),rgba(255,255,255,0.1) ) 1 / 1px / 0px stretch;`
-        );
-      }}
-      onMouseLeave={(e: MouseEvent<HTMLLIElement>) => {
-        e.currentTarget.removeAttribute('style');
-      }}
+      onMouseMove={handleOnMouseMoveItem}
+      onMouseLeave={handleOnMouseLeaveItem}
     >
       {children}
     </li>

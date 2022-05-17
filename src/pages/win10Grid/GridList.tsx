@@ -6,11 +6,11 @@ import { setElementStyleWhenMouseIn } from './utils';
 const detectRad: number[] = [0, 45, 90, 135, 180, 225, 270, 315, 360].map(
   (angle) => (angle * Math.PI) / 180
 );
-const OFFSET = 70;
+const OFFSET = 64;
 let nearBy: Set<HTMLLIElement> = new Set();
 
 const clearNearBy = () => {
-  nearBy.forEach((element) => (element.style.borderImage = ''));
+  nearBy.forEach((element) => element.removeAttribute('style'));
   nearBy.clear();
 };
 
@@ -42,13 +42,20 @@ const GridList = ({ menu, className }: GridListProps) => {
     });
   };
 
+  const handleOnMouseLeaveGrid = () => clearNearBy();
+
+  const handleOnMouseOverGrid = (e: MouseEvent<HTMLElement>) => {
+    if (e.target instanceof HTMLLIElement && e.relatedTarget instanceof HTMLUListElement) {
+      clearNearBy();
+    }
+  };
+
   return (
     <ul
       className={className}
       onMouseMove={handleOnMouseMoveGrid}
-      onMouseLeave={() => {
-        clearNearBy();
-      }}
+      onMouseLeave={handleOnMouseLeaveGrid}
+      onMouseOver={handleOnMouseOverGrid}
     >
       {menu.map((item, index) => (
         <GridItem key={index} id={index.toString()}>
