@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { isEmpty } from 'lodash';
 
 export const Home = () => {
   const { pathname } = useLocation();
-  const isAtHome = isEmpty(pathname.split('/')[1]);
+  const isAtHome = !pathname.split('/')[1];
 
   return isAtHome ? (
     <div>
