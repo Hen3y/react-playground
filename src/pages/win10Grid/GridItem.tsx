@@ -1,28 +1,31 @@
-import React, { MouseEvent, ReactNode } from 'react';
+import React, { Key, MouseEvent, ReactNode } from 'react';
 import styled from 'styled-components';
+import { setElementStyleWhenMouseIn } from './utils';
 
 interface GridItemProps {
   className?: string;
   children: ReactNode;
+  id: string;
 }
 
-const GridItem = ({ className, children }: GridItemProps) => {
-  const handleOnMouseLeave = (e: MouseEvent<HTMLLIElement>) => {
-    e.currentTarget.removeAttribute('style');
-  };
-
-  const handleOnMouseMove = (e: MouseEvent<HTMLLIElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    e.currentTarget.setAttribute(
-      'style',
-      `background: radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));border-image: radial-gradient(20% 75% at ${x}px ${y}px ,rgba(255,255,255,0.7),rgba(255,255,255,0.1) ) 1 / 1px / 0px stretch `
-    );
-  };
-
+const GridItem = ({ className, children, id }: GridItemProps) => {
   return (
-    <li className={className} onMouseMove={handleOnMouseMove} onMouseLeave={handleOnMouseLeave}>
+    <li
+      id={id}
+      className={className}
+      onMouseMove={(e: MouseEvent<HTMLLIElement>) => {
+        const { clientX, clientY } = e;
+        setElementStyleWhenMouseIn(
+          e.currentTarget,
+          { clientX, clientY },
+          (x, y) =>
+            `background: radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));border-image: radial-gradient(20% 75% at ${x}px ${y}px ,rgba(255,255,255,0.7),rgba(255,255,255,0.1) ) 1 / 1px / 0px stretch;`
+        );
+      }}
+      onMouseLeave={(e: MouseEvent<HTMLLIElement>) => {
+        e.currentTarget.removeAttribute('style');
+      }}
+    >
       {children}
     </li>
   );
