@@ -15,13 +15,13 @@ export const Win10Grid = () => {
 };
 
 const Background = styled.div`
-  background-color: #111;
-  text-align: center;
+  background-color: #000;
   color: #fff;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
 const Title = styled.h1`
