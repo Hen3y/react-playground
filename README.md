@@ -22,4 +22,4 @@ Feature:
 - Detect elements around mouse
 - Dynamically render hover effect against mouse position
   
-Inspired by [WeChatLink](https://mp.weixin.qq.com/s/df4zDYQnpHKRZp34jIoRSA)
+Inspired by [this article](https://mp.weixin.qq.com/s/df4zDYQnpHKRZp34jIoRSA)
