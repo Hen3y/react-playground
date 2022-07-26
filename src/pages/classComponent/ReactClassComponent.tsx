@@ -1,9 +1,56 @@
 import React, { Component } from 'react';
 
-class ClassComponent extends Component {
+interface Todo {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+interface IState {
+  todos: Todo[];
+}
+
+export class ClassComponent extends Component<Record<string, unknown>, IState> {
+  constructor(props: Readonly<Record<string, unknown>>) {
+    super(props);
+    this.state = {
+      todos: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/todos')
+      .then((res) => res.json())
+      .then((todos) => this.setState({ todos }))
+      .catch((error) => console.error(error));
+  }
+
   render() {
-    return <div>test</div>;
+    const { todos } = this.state;
+
+    return todos.length === 0 ? (
+      <p>Loading</p>
+    ) : (
+      <pre style={{ wordWrap: 'break-word', whiteSpace: 'pre-wrap' }}>
+        {new todosStringConverter(todos).result}
+      </pre>
+    );
   }
 }
 
-export default ClassComponent;
+class todosStringConverter {
+  private readonly todos: string;
+
+  constructor(todos: Todo[]) {
+    this.todos = this.process(todos);
+  }
+
+  private process(todos: Todo[]) {
+    return todos.reduce((prev: string, current: Todo) => `${prev}\n${JSON.stringify(current)}`, '');
+  }
+
+  get result() {
+    return this.todos;
+  }
+}
