@@ -16,8 +16,8 @@ const StyledButton = styled.button`
   transition: all 0.25s ease-in;
   font-size: 2rem;
   font-weight: bold;
-  height: 2em;
-  width: 8em;
+  width: 100%;
+  padding: 1rem;
   cursor: pointer;
 
   &:hover {
