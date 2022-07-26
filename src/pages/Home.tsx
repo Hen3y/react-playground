@@ -10,11 +10,14 @@ export const Home = () => {
   return isAtHome ? (
     <Background>
       <Title>Home</Title>
-      <nav>
+      <NavCol>
         <Link to={'/win-10-grid'}>
           <Button>Win 10 Grid</Button>
         </Link>
-      </nav>
+        <Link to={'/class-component'}>
+          <Button>React Class Component Review</Button>
+        </Link>
+      </NavCol>
     </Background>
   ) : (
     <Outlet />
@@ -37,3 +40,12 @@ const Title = styled.h1`
   padding: 2rem;
   color: #daa520;
 `;
+
+const NavCol = styled.nav`
+  display: flex;
+  flex-flow: column nowrap;
+  
+  & > :not(a:last-of-type) button {
+    margin-bottom: 1.5rem;
+  }
+`
