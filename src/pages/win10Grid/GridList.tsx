@@ -7,7 +7,7 @@ const detectRad: number[] = [0, 45, 90, 135, 180, 225, 270, 315, 360].map(
   (angle) => (angle * Math.PI) / 180
 );
 const OFFSET = 64;
-let nearBy: Set<HTMLLIElement> = new Set();
+const nearBy: Set<HTMLLIElement> = new Set();
 
 const clearNearBy = () => {
   nearBy.forEach((element) => element.removeAttribute('style'));

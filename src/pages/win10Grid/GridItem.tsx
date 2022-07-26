@@ -1,4 +1,4 @@
-import React, { Key, MouseEvent, ReactNode } from 'react';
+import React, { MouseEvent, ReactNode } from 'react';
 import styled from 'styled-components';
 import { setElementStyleWhenMouseIn } from './utils';
 
