@@ -17,6 +17,7 @@ const StyledButton = styled.button`
   font-size: 2rem;
   font-weight: bold;
   width: 100%;
+  max-width: 50vw;
   padding: 1rem;
   cursor: pointer;
 
