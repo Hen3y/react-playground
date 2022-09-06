@@ -1,3 +1,3 @@
 export * from './Home';
-export * from './win10Grid/Win10Grid';
-export * from './classComponent/ReactClassComponent'
+export * from './win10-grid/Win10Grid';
+export * from './class-component/ReactClassComponent'

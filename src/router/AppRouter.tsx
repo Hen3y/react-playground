@@ -7,7 +7,7 @@ export const AppRouter = () => {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />}>
-          <Route path='win-10-grid' element={<Win10Grid />} />
+          <Route path='win10-grid' element={<Win10Grid />} />
           <Route path='class-component' element={<ClassComponent />} />
         </Route>
         <Route path='*' element={<Navigate to={'/'} />} />
