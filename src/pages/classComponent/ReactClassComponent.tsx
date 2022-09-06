@@ -21,8 +21,12 @@ export class ClassComponent extends Component<Record<string, unknown>, IState> {
 
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/todos')
-      .then((res) => res.json())
-      .then((todos) => this.setState({ todos }))
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        this.setState({ todos: json });
+      })
       .catch((error) => console.error(error));
   }
 
