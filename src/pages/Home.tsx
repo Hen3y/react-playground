@@ -15,7 +15,10 @@ export const Home = () => {
           <Button>Win 10 Grid</Button>
         </Link>
         <Link to={'/class-component'}>
-          <Button>React Class Component Review</Button>
+          <Button>React Class Component</Button>
+        </Link>
+        <Link to={'/react-portal'}>
+          <Button>React Portal</Button>
         </Link>
       </NavCol>
     </Background>
