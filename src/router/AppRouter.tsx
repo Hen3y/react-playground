@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { ClassComponent, Home, Win10Grid, PortalPage } from '../pages';
+import { ClassComponent, Home, Win10Grid, PortalPage } from '@/pages';
 
 export const AppRouter = () => {
   return (

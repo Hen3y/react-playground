@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import { Button } from '../components/Button';
+import { Button } from '@/components/Button';
 
 export const Home = () => {
   const { pathname } = useLocation();
