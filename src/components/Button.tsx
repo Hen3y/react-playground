@@ -1,11 +1,9 @@
-import React, { ReactNode } from 'react';
+import React, { HTMLAttributes, FC } from 'react';
 import styled from 'styled-components';
 
-type ButtonProps = {
-  children: ReactNode;
-};
+type ButtonProps = HTMLAttributes<HTMLButtonElement>;
 
-export const Button = ({ children }: ButtonProps) => {
+export const Button: FC<ButtonProps> = ({ children }) => {
   return <StyledButton>{children}</StyledButton>;
 };
 
